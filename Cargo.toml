@@ -18,7 +18,8 @@ categories = [
 
 [workspace]
 members = [
-    "derive"
+    "derive",
+    "openapi",
 ]
 
 [features]
