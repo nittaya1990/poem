@@ -6,5 +6,4 @@ edition = "2018"
 [dependencies]
 poem = { path = "..", version = "0.3.7" }
 
-serde_yaml = "0.8.19"
 openapiv3 = "0.5.0"
