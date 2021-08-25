@@ -6,6 +6,7 @@
 #![warn(missing_docs)]
 
 mod handler;
+mod schema;
 mod utils;
 
 use proc_macro::TokenStream;

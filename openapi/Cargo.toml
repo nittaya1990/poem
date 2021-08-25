@@ -7,3 +7,4 @@ edition = "2018"
 poem = { path = "..", version = "0.3.7" }
 
 openapiv3 = "0.5.0"
+serde_json = "1.0.66"
