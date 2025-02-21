@@ -1,0 +1,10 @@
+[package]
+name = "example-static-files"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+poem = { workspace = true, features = ["static-files"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+tracing-subscriber.workspace = true

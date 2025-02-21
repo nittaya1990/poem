@@ -1,0 +1,11 @@
+[package]
+name = "example-embed-files"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+poem = { workspace = true, features = ["embed"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+tracing-subscriber.workspace = true
+rust-embed = "8.0"

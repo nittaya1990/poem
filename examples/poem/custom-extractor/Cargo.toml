@@ -1,0 +1,11 @@
+[package]
+name = "example-custom-extractor"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+poem.workspace = true
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+serde.workspace = true
+tracing-subscriber.workspace = true

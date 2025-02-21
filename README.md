@@ -1,71 +1,71 @@
-<h1 align="center"><code>Poem Framework</code></h1>
+<h1 align="center">Poem Framework</h1>
 
-<p align="center"><code>A program is like a poem, you cannot write a poem without writing it. --- Dijkstra</code></p>
-<p align="center"> A full-featured and easy-to-use web framework with the Rust programming language.</p>
 <div align="center">
   <!-- CI -->
-  <img src="https://github.com/poem-web/poem/workflows/CI/badge.svg" />
+  <img src="https://github.com/poem-web/poem/actions/workflows/ci.yml/badge.svg" />
   <!-- codecov -->
   <img src="https://codecov.io/gh/poem-web/poem/branch/master/graph/badge.svg" />
-  <!-- Crates version -->
-  <a href="https://crates.io/crates/poem">
-    <img src="https://img.shields.io/crates/v/poem.svg?style=flat-square"
-    alt="Crates.io version" />
-  </a>
-  <!-- Downloads -->
-  <a href="https://crates.io/crates/poem">
-    <img src="https://img.shields.io/crates/d/poem.svg?style=flat-square"
-      alt="Download" />
-  </a>
-  <!-- docs.rs docs -->
-  <a href="https://docs.rs/poem">
-    <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square"
-      alt="docs.rs docs" />
-  </a>
   <a href="https://github.com/rust-secure-code/safety-dance/">
     <img src="https://img.shields.io/badge/unsafe-forbidden-success.svg?style=flat-square"
       alt="Unsafe Rust forbidden" />
   </a>
-  <a href="https://blog.rust-lang.org/2021/07/29/Rust-1.54.0.html">
-    <img src="https://img.shields.io/badge/rustc-1.54+-ab6000.svg"
-      alt="rustc 1.54+" />
+  <a href="https://blog.rust-lang.org/2023/11/16/Rust-1.83.0.html">
+    <img src="https://img.shields.io/badge/rustc-1.83.0+-ab6000.svg"
+      alt="rustc 1.83.0+" />
+  </a>
+  <a href="https://discord.gg/qWWNxwasb7">
+    <img src="https://img.shields.io/discord/932986985604333638.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2" />
+  </a>
+  <a href="https://deps.rs/repo/github/poem-web/poem">
+    <img src="https://deps.rs/repo/github/poem-web/poem/status.svg" />
+  </a>
+  <a href="https://crates.io/crates/poem">
+    <img src="https://img.shields.io/crates/d/poem.svg" />
   </a>
 </div>
+<p align="center"><code>A program is like a poem, you cannot write a poem without writing it. --- Dijkstra</code></p>
+<p align="center"> A full-featured and easy-to-use web framework with the Rust programming language.</p>
 
 ***
 
-## Features
+This repo contains the following main components:
 
-* **Fast**: Both _Ease_ of use and performance.
-* **Minimal generalization**: Minimizing the use of generics.
-* **Open API**: Use [poem-openapi](https://crates.io/crates/poem-openapi) to write APIs that comply with [OAS3](https://github.com/OAI/OpenAPI-Specification) specifications and automatically generate documents.
+| Crate                                                                                                       | Description          | Documentation                      | ChangeLog                                |
+|-------------------------------------------------------------------------------------------------------------|----------------------|------------------------------------|------------------------------------------|
+| **poem** [![](https://img.shields.io/crates/v/poem)](https://crates.io/crates/poem)                         | Poem Web             | [(README)](poem/README.md)         | [(CHANGELOG)](poem/CHANGELOG.md)         |
+| **poem-lambda** [![](https://img.shields.io/crates/v/poem-lambda)](https://crates.io/crates/poem-lambda)    | Poem for AWS Lambda  | [(README)](poem-lambda/README.md)  | [(CHANGELOG)](poem-lambda/CHANGELOG.md)  |
+| **poem-openapi** [![](https://img.shields.io/crates/v/poem-openapi)](https://crates.io/crates/poem-openapi) | OpenAPI for Poem Web | [(README)](poem-openapi/README.md) | [(CHANGELOG)](poem-openapi/CHANGELOG.md) |
 
-## Example
+***
 
-```rust
-use poem::{handler, route, web::Path, route::get, Server};
+The following are cases of community use:
 
-#[handler]
-fn hello(Path(name): Path<String>) -> String {
-    format!("hello: {}", name)
-}
+| Repo                                                                             | Description                                                                                                            | Documentation                                                                           |
+|----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| [delicate](https://github.com/BinChengZhao/delicate)                             | A distributed task scheduling platform written in rust.                                                                | [(README)](https://delicate-rs.github.io/Roadmap.html)                                  |
+| [databend](https://github.com/datafuselabs/databend)                             | A cloud-native data warehouse written in rust.                                                                         | [(ROADMAP)](https://github.com/datafuselabs/databend/issues/746)                        |
+| [muse](https://leihuo.163.com/)                                                  | A NetEase Leihuo's internal art resource sharing platform, backend in rust.                                            |                                                                                         |
+| [hik-proconnect](https://www.hikvision.com/en/products/software/hik-proconnect/) | A front-end automated deployment platform based on continuous integration of aws. Hik-ProConnect project for Hikvision |                                                                                         |
+| [warpgate](https://github.com/eugeny/warpgate)                                   | A smart SSH bastion host that works with any SSH clients.                                                              | [(README)](https://github.com/warp-tech/warpgate/blob/main/README.md)                   |
+| [lust](https://github.com/ChillFish8/lust)                                       | A fast, auto-optimizing image server designed for high throughput and caching.                                         | [(README)](https://github.com/ChillFish8/lust/blob/master/README.md)                    |
+| [aptos](https://github.com/aptos-labs/aptos-core)                                | Building the safest and most scalable Layer 1 blockchain.                                                              | [(WEBSITE)](https://aptoslabs.com/)                                                     |
+| [poem-casbin](https://github.com/casbin-rs/poem-casbin)                          | Casbin access control middleware for poem framework.                                                                   | [(WEBSITE)](https://casbin.org/)                                                        |
+| [poem-grants](https://github.com/DDtKey/protect-endpoints/tree/main/poem-grants) | Authorization extension to protect endpoints.                                                                          | [(README)](https://github.com/DDtKey/protect-endpoints/blob/main/poem-grants/README.md) |
 
-#[tokio::main]
-async fn main() {
-    let app = route().at("/hello/:name", get(hello));
-    let server = Server::bind("127.0.0.1:3000").await.unwrap();
-    server.run(app).await.unwrap();
-}
 
-```
+### Startups
 
-More examples can be found [here][examples]. 
+- [My Data My Consent](https://mydatamyconsent.com/) | Online data sharing for people and businesses simplified
 
-[examples]: https://github.com/poem-web/poem/tree/master/examples
+
+### Resources
+
+- [Examples](https://github.com/poem-web/poem/tree/master/examples)
+
 
 ## Contributing
 
-:balloon: Thanks for your help improving the project! We are so happy to have you! 
+:balloon: Thanks for your help improving the project! We are so happy to have you!
 
 
 ## License

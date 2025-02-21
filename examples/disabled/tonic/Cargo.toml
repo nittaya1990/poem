@@ -1,0 +1,20 @@
+[package]
+name = "example-tonic"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+poem = { workspace = true, features = ["tower-compat"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+prost = "0.13.1"
+tonic = "0.12.1"
+tracing-subscriber.workspace = true
+tower = { version = "0.4.8", features = ["buffer"] }
+
+[build-dependencies]
+tonic-build = "0.12.1"
+
+[[bin]]
+name = "example-tonic-client"
+path = "src/client.rs"

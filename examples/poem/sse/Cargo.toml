@@ -1,0 +1,12 @@
+[package]
+name = "example-sse"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+poem = { workspace = true, features = ["sse"] }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+futures-util.workspace = true
+tokio-stream.workspace = true
+tracing-subscriber.workspace = true

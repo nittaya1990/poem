@@ -1,0 +1,183 @@
+[package]
+name = "poem"
+version = "3.1.7"
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+documentation.workspace = true
+homepage.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+description = "Poem is a full-featured and easy-to-use web framework with the Rust programming language."
+keywords = ["http", "web", "framework", "async"]
+categories = [
+    "network-programming",
+    "asynchronous",
+    "web-programming::http-server",
+    "web-programming::websocket",
+]
+
+[features]
+default = ["server"]
+
+server = ["tokio/rt", "tokio/net", "hyper/server"]
+websocket = ["tokio/rt", "tokio-tungstenite", "base64"]
+multipart = ["multer"]
+rustls = ["server", "tokio-rustls", "rustls-pemfile"]
+native-tls = ["server", "tokio-native-tls"]
+openssl-tls = ["server", "tokio-openssl", "openssl"]
+sse = ["tokio-stream"]
+static-files = ["httpdate", "mime_guess", "tokio/io-util", "tokio/fs"]
+compression = ["async-compression"]
+tower-compat = ["tokio/rt", "tower"]
+cookie = ["libcookie", "chrono", "time"]
+session = ["tokio/rt", "cookie", "rand", "priority-queue", "base64"]
+redis-session = ["session", "redis"]
+opentelemetry = [
+    "libopentelemetry",
+    "opentelemetry-http",
+    "opentelemetry-semantic-conventions",
+]
+prometheus = ["libopentelemetry", "opentelemetry-prometheus", "libprometheus"]
+tempfile = ["libtempfile", "tokio/fs"]
+csrf = ["cookie", "base64", "libcsrf"]
+test = ["sse", "sse-codec", "tokio-util/compat"]
+i18n = [
+    "fluent",
+    "fluent-langneg",
+    "fluent-syntax",
+    "unic-langid",
+    "intl-memoizer",
+]
+acme = ["acme-native-roots"]
+acme-native-roots = ["acme-base", "reqwest/rustls-tls-native-roots"]
+acme-webpki-roots = ["acme-base", "reqwest/rustls-tls-webpki-roots"]
+acme-base = [
+    "server",
+    "reqwest",
+    "rustls",
+    "ring",
+    "base64",
+    "rcgen",
+    "x509-parser",
+    "chrono",
+]
+embed = ["rust-embed", "hex", "mime_guess"]
+xml = ["quick-xml"]
+yaml = ["serde_yaml"]
+requestid = ["dep:uuid"]
+sonic-rs = ["dep:sonic-rs"]
+
+[dependencies]
+poem-derive.workspace = true
+
+bytes.workspace = true
+futures-util = { workspace = true, features = ["sink"] }
+http.workspace = true
+hyper = { version = "1.0.0", features = ["http1", "http2"] }
+hyper-util = { version = "0.1.6", features = ["server-auto", "tokio"] }
+http-body-util = "0.1.0"
+tokio = { workspace = true, features = ["sync", "time", "macros", "net"] }
+tokio-util = { version = "0.7.0", features = ["io"] }
+serde.workspace = true
+sonic-rs = { workspace = true, optional = true }
+serde_json.workspace = true
+serde_urlencoded.workspace = true
+parking_lot = "0.12.0"
+pin-project-lite = "0.2.7"
+percent-encoding = "2.1.0"
+regex.workspace = true
+smallvec = "1.6.1"
+tracing.workspace = true
+headers = "0.4.0"
+thiserror.workspace = true
+rfc7239 = "0.1.0"
+mime.workspace = true
+wildmatch = "2"
+sync_wrapper = { version = "1.0.0", features = ["futures"] }
+
+# Non-feature optional dependencies
+multer = { version = "3.0.0", features = ["tokio"], optional = true }
+tokio-tungstenite = { version = "0.25", optional = true }
+tokio-rustls = { workspace = true, optional = true }
+rustls-pemfile = { version = "2.0.0", optional = true }
+async-compression = { version = "0.4.0", optional = true, features = [
+    "tokio",
+    "gzip",
+    "brotli",
+    "deflate",
+] }
+tower = { version = "0.4.8", optional = true, default-features = false, features = [
+    "util",
+    "buffer",
+] }
+chrono = { workspace = true, optional = true, default-features = false, features = [
+    "clock",
+] }
+time = { version = "0.3", optional = true }
+mime_guess = { version = "2.0.3", optional = true }
+rand = { version = "0.8.4", optional = true }
+redis = { version = "0.28", optional = true, features = [
+    "aio",
+    "tokio-comp",
+    "connection-manager",
+] }
+libcookie = { package = "cookie", version = "0.18", features = [
+    "percent-encode",
+    "private",
+    "signed",
+    "key-expansion",
+    "secure",
+], optional = true }
+opentelemetry-http = { version = "0.28.0", optional = true }
+opentelemetry-semantic-conventions = { version = "0.28.0", optional = true, features = [
+    "semconv_experimental",
+] }
+opentelemetry-prometheus = { version = "0.28.0", optional = true }
+libprometheus = { package = "prometheus", version = "0.13.0", optional = true }
+libopentelemetry = { package = "opentelemetry", version = "0.28.0", features = [
+    "metrics",
+], optional = true }
+libtempfile = { package = "tempfile", version = "3.2.0", optional = true }
+priority-queue = { version = "2.0.2", optional = true }
+tokio-native-tls = { version = "0.3.0", optional = true }
+tokio-openssl = { version = "0.6.3", optional = true }
+openssl = { version = "0.10.71", optional = true }
+base64 = { workspace = true, optional = true }
+libcsrf = { package = "csrf", version = "0.4.1", optional = true }
+httpdate = { version = "1.0.2", optional = true }
+sse-codec = { version = "0.3.2", optional = true }
+fluent = { version = "0.16.0", optional = true }
+fluent-langneg = { version = "0.13.0", optional = true }
+fluent-syntax = { version = "0.11.0", optional = true }
+unic-langid = { version = "0.9.0", optional = true, features = ["macros"] }
+intl-memoizer = { version = "0.5.1", optional = true }
+ring = { version = "0.17.7", optional = true }
+reqwest = { workspace = true, features = ["json"], optional = true }
+rcgen = { version = "0.12.0", optional = true }
+x509-parser = { version = "0.16.0", optional = true }
+tokio-metrics = { version = "0.3.0", optional = true }
+rust-embed = { version = "8.0", optional = true }
+hex = { version = "0.4", optional = true }
+quick-xml = { workspace = true, optional = true }
+serde_yaml = { workspace = true, optional = true }
+tokio-stream = { workspace = true, optional = true }
+
+# Feature optional dependencies
+anyhow = { version = "1.0.0", optional = true }
+eyre06 = { package = "eyre", version = "0.6.12", optional = true }
+uuid = { version = "1.8.0", optional = true, default-features = false, features = [
+    "v4",
+] }
+
+[target.'cfg(unix)'.dependencies]
+nix = { version = "0.29.0", features = ["fs", "user"] }
+
+[dev-dependencies]
+async-stream = "0.3.2"
+tokio = { workspace = true, features = ["rt-multi-thread", "macros"] }
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
